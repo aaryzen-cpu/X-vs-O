@@ -69,6 +69,8 @@ if __name__ == "__main__":
     print("Welcome to Tic Tac Toe")
     printBoard(xState, yState)
 
+    moves = 0
+
     while True:
 
         if turn == 1:
@@ -95,12 +97,18 @@ if __name__ == "__main__":
         else:
             yState[value] = 1
 
+        moves += 1
+
         printBoard(xState, yState)
 
         cwin = checkWin(xState, yState)
 
         if cwin != -1:
             print("Match Over")
+            break
+
+        if moves == 9:
+            print(Fore.YELLOW + "It's a Draw!" + Style.RESET_ALL)
             break
 
         turn = 1 - turn
